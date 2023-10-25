@@ -70,7 +70,7 @@ myProgressBar.setAttribute('disabled', '')
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
     element.addEventListener('click', (e) => {
         makeAllPlays();
-        if (audioElement.paused || songIndex !== (e.target.id)) {
+        if (audioElement.paused || songIndex !== parseInt(e.target.id)) {
             e.target.closest('.songItem').style.backgroundColor = 'rgb(89, 176, 174)'
             songIndex = parseInt(e.target.id);
             audioElement.src = `./songs/${songIndex + 1}.mp4`
