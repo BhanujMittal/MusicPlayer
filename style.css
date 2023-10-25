@@ -226,10 +226,11 @@ ul li a:hover {
 }
 
 .bottomSongName {
-    font-size: 2.5vw;
+    font-size: 2vw;
 }
 
-.controls, #endTime {
+.controls,
+#endTime {
     z-index: 2;
 }
 
@@ -251,7 +252,7 @@ ul li a:hover {
     }
 
     .bottomSongName {
-        font-size: 4vw;
+        font-size: 3vw;
     }
 
     .bottom {

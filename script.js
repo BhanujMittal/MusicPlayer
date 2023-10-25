@@ -70,35 +70,34 @@ myProgressBar.setAttribute('disabled', '')
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element) => {
     element.addEventListener('click', (e) => {
         makeAllPlays();
-        e.target.closest('.tooltip').setAttribute('data-tooltip', 'Play Song From Start');
-        if (audioElement.paused) {
-            songIndex = parseInt(e.target.id)
-            e.target.classList.remove('fa-play');
-            e.target.classList.add('fa-pause');
-            e.target.closest('.tooltip').setAttribute('data-tooltip', 'Pause Song');
+        if (audioElement.paused || songIndex !== (e.target.id)) {
+            e.target.closest('.songItem').style.backgroundColor = 'rgb(89, 176, 174)'
+            songIndex = parseInt(e.target.id);
             audioElement.src = `./songs/${songIndex + 1}.mp4`
             play.click();
             audioElement.play();
             audioElement.currentTime = 0;
+            e.target.classList.remove('fa-play');
+            e.target.classList.add('fa-pause');
+            e.target.closest('.tooltip').setAttribute('data-tooltip', 'Pause Song');
             myProgressBar.removeAttribute('disabled');
             setTimeout(() => {
                 gif.style.opacity = '1';
             }, 200);
-            e.target.closest('.songItem').style.backgroundColor = 'rgb(89, 176, 174)'
             document.getElementsByClassName('bottomSongName')[0].innerHTML = songs[songIndex]['songName'];
         } else {
-            myProgressBar.setAttribute('disabled', '')
+            e.target.classList.add('fa-play');
             e.target.classList.remove('fa-pause');
+            masterPlay.click();
+            audioElement.pause();
+            myProgressBar.setAttribute('disabled', '')
             myProgressBar.value = '0'
             startTime.innerHTML = "0:00"
             endTime.innerHTML = ''
-            e.target.classList.add('fa-play');
             e.target.closest('.tooltip').setAttribute('data-tooltip', 'Play Song From Start');
-            masterPlay.click();
             setTimeout(() => {
                 gif.style.opacity = '0';
             }, 200);
-            audioElement.pause();
             audioElement.src = '';
             document.getElementsByClassName('bottomSongName')[0].innerHTML = '';
         }
