@@ -219,7 +219,7 @@ masterPlay.addEventListener('click', () => {
         audioElement.play();
         play.classList.remove('fa-play')
         play.classList.add('fa-pause')
-        masterPlay.setAttribute('data-tooltip', 'Pause Song')
+        masterPlay.setAttribute('data-tooltip', 'Pause Song (space)')
         setTimeout(() => {
             gif.style.opacity = '1';
         }, 200);
